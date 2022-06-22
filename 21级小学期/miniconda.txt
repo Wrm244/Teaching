@@ -1,0 +1,29 @@
+uname -a
+wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-armv7l.sh
+使用pip安装Opencv应该是最快最简单的安装方式了
+
+pip install opencv-contrib-python
+1
+如果pip原始源下载慢的话可以考虑使用国内源:
+
+pip3 install opencv-contrib-python -i https://pypi.tuna.tsinghua.edu.cn/simple
+1
+首先需要说明的是通过pip安装的opencv包不是官方编译好的opencv包, 也就是说他们没有得到官方非认可, 但这并不影响你的正常使用.
+
+一般来说, pip提供的opencv的包的类型有四种:
+opencv-python: 只包含opencv库的主要模块. 一般不推荐安装.
+opencv-contrib-python: 包含主要模块和contrib模块, 功能基本完整, 推荐安装.
+opencv-python-headless: 和opencv-python一样, 但是没有GUI功能, 无外设系统可用.
+opencv-contrib-python-headless: 和opencv-contrib-python一样但是没有GUI功能. 无外设系统可用.
+因此一般来说都会选择安装opencv-contrib-python
+不要同时安装opencv-python和opencv-contrib-python
+
+测试opencv是否安装成功
+
+import cv2
+print(cv2.__version__)
+1
+2
+如果成功导入opencv包并打印相应opencv的版本就说明安装成功了.
+
+最后, 通过pip安装的opencv包不能使用非开源的算法, 如SIFT, SURF, 还有其他的opencv专利的算法, 如果不需要用到这些算法, 使用pip安装opencv是可行的, 如果你需要用到这些算法, 那就要参考另一篇文章
